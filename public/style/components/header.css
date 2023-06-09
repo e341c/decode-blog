@@ -1,3 +1,11 @@
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background: #fff;
+}
 .header h1{
     color: #00A2DC;
 }

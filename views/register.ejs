@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head.ejs') %>
+    <title>Document</title>
+</head>
+<body>
+    <%- include('partials/header.ejs') %>
+    <div class="background vh-100 py-5 d-flex justify-content-center">
+        <div class="register w-25">
+            <h3 class="text-center">Регистрация</h3>
+            <div class="form-floating mb-3 mt-4">
+                <input type="email" class="form-control" id="floatingInput" placeholder="Введите email">
+                <label for="floatingInput">Введите email</label>
+            </div>
+            <div class="form-floating mb-3 mt-4">
+                <input type="email" class="form-control" id="floatingInput" placeholder="Введите полное имя">
+                <label for="floatingInput">Введите полное имя</label>
+            </div>
+            <div class="form-floating mb-3 mt-4">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Введите пароль">
+                <label for="floatingPassword">Введите пароль</label>
+            </div>
+            <div class="form-floating mt-4">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Подтвердите пароль">
+                <label for="floatingPassword">Подтвердите пароль</label>
+            </div>
+            <button class="btn btn-primary w-100 mt-4 p-3">Зарегистрироваться</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -2,12 +2,20 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 
-app.use(express.static(__dirname + '/public'))
+app.use(express.static('public'))
 
 app.set('view engine', 'ejs')
 
 app.get('/', (req, res) => {
-    res.render('index.ejs')
+    res.render('blogs.ejs')
+})
+
+app.get('/login', (req, res) => {
+    res.render('login.ejs')
+})
+
+app.get('/register', (req, res) => {
+    res.render('register.ejs')
 })
 
 const PORT = 8000
