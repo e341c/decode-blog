@@ -18,6 +18,14 @@ app.get('/register', (req, res) => {
     res.render('register.ejs')
 })
 
+app.get('/profile', (req, res) => {
+    res.render('profile.ejs')
+})
+
+app.get('/new-blog', (req, res) => {
+    res.render('new-blog.ejs')
+})
+
 const PORT = 8000
 
 app.listen(PORT, () => {

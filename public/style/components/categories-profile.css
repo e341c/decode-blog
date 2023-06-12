@@ -12,3 +12,9 @@
     text-decoration: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+.profile{
+    margin-top: 100px;
+    padding: 40px 3%;
+    background-color: #fff;
+    height: 100%;
+}
