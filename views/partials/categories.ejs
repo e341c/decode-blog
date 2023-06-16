@@ -1,13 +1,6 @@
 <div class="categories d-flex flex-column ms-4 w-25 shadow-sm">
     <h3>Категории</h3>
-    <a href="">Прогнозы в IT</a>
-    <a href="">Веб-разработка</a>
-    <a href="">Мобильная разработка</a>
-    <a href="">Фриланс</a>
-    <a href="">Алгоритмы</a>
-    <a href="">Тестирование IT систем</a>
-    <a href="">Разработка игр</a>
-    <a href="">Дизайн и юзабилити</a>
-    <a href="">Искуственный интелект</a>
-    <a href="">Машинное обучение</a>
+    <% blogs.forEach(element => { %>
+        <a href=""><%= element.name %></a>
+    <% }); %>
 </div>

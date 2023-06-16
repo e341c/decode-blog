@@ -16,9 +16,9 @@
                 <div class="input-group mb-3">
                     <select class="form-select" id="inputGroupSelect01">
                     <option selected>Выберите категорию</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <% blogs.forEach((element, key) => { %>
+                        <option value="<%= key %>"><%= element.name %></option>
+                    <% }) %>
                     </select>
                 </div>
                 <div class="input-group mb-3 w-50">
@@ -27,7 +27,8 @@
                 <div class="form-floating">
                     <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px"></textarea>
                     <label for="floatingTextarea2">Введите описание блога</label>
-                  </div>
+                </div>
+                <button class="btn btn-primary p-2 px-3 mt-3">Создать</button>
             </div>
             
         </div>
