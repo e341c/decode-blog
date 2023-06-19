@@ -7,26 +7,28 @@
 <body>
     <%- include('partials/header.ejs') %>
     <div class="background vh-100 py-5 d-flex justify-content-center">
-        <div class="register w-25">
+        <form action="/api/signup" method="POST" class="register w-25">
             <h3 class="text-center">Регистрация</h3>
             <div class="form-floating mb-3 mt-4">
-                <input type="email" class="form-control" id="floatingInput" placeholder="Введите email">
+                <input type="email" class="form-control" id="floatingInput" placeholder="Введите email" name="email">
                 <label for="floatingInput">Введите email</label>
             </div>
             <div class="form-floating mb-3 mt-4">
-                <input type="email" class="form-control" id="floatingInput" placeholder="Введите полное имя">
+                <input type="text" class="form-control" id="floatingInput" placeholder="Введите полное имя" name="full_name">
                 <label for="floatingInput">Введите полное имя</label>
             </div>
             <div class="form-floating mb-3 mt-4">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Введите пароль">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Введите пароль" name="password">
                 <label for="floatingPassword">Введите пароль</label>
             </div>
             <div class="form-floating mt-4">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Подтвердите пароль">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Подтвердите пароль" name="re_password">
                 <label for="floatingPassword">Подтвердите пароль</label>
             </div>
-            <button class="btn btn-primary w-100 mt-4 p-3">Зарегистрироваться</button>
-        </div>
+            <a href="/login">
+                <button class="btn btn-primary w-100 mt-4 p-3" type="submit">Зарегистрироваться</button>
+            </a>
+        </form>
     </div>
 </body>
 </html>
