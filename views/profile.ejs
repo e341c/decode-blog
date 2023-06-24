@@ -14,7 +14,6 @@
                     <a href="/new">
                         <button class="btn btn-primary p-2 px-3">Добавить блог</button>
                     </a>
-                    
                 </div>
                 <div class="blog mt-3 pt-3">
                     <img class="w-100" src="/img/image 1.svg" alt="">
@@ -134,10 +133,11 @@
                 <div class="profile-img d-flex justify-content-center mb-3">
                     <img src="/img/avatar.png" alt="">
                 </div>
-                <p class="my-3">Елнур Сеитжанов</p>
+                <p class="my-3"><%= user.full_name %></p>
                 <p class="my-3">В основном пишу про веб - разработку, на React & Redux</p>
                 <p class="my-3">285 постов за все время</p>
-                <button class="btn btn-primary py-2 mt-3">Редактировать</button>
+                <a class="btn btn-primary py-2 mt-3">Редактировать</a>
+                <a href="/api/signout" class="btn btn-danger py-2 mt-3">Выход</a>
             </div>
         </div>
     </div>
