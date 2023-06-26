@@ -1,4 +1,4 @@
-const Blogs = require('./Blogs')
+const Blogs = require('./Categories')
 const data = [
     'Прогнозы в IT',
     'Веб-разработка',
@@ -12,7 +12,7 @@ const data = [
     'Машинное обучение',
 ]
 
-async function writeDataBlog(){
+async function writeDataCategories(){
     const length = await Blogs.count()
     if(length == 0){
         data.map((item, index) => {
@@ -24,4 +24,4 @@ async function writeDataBlog(){
     }
 }
 
-module.exports = writeDataBlog
+module.exports = writeDataCategories

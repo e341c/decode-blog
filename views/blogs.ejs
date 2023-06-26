@@ -98,6 +98,45 @@
                         </div>
                     </div>
                 </div>
+                <div class="blog mt-5 pt-3">
+                    <% blogs.forEach((blog, index) => { %>
+                        <img class="w-100" src="/img/<%= blog.img %>" alt="">
+                        <h3 class="py-3 mt-3"><%= blog.name %></h3>
+                        <p><%= blog.description %></p>
+                        <div class="blog-info d-flex justify-content-between align-items-center mt-5">
+                            <div class="date d-flex">
+                                <div class="me-3">
+                                    <img src="/img/icons/calendar.svg" alt="">
+                                </div>
+                                <p>26.06.2020</p>
+                            </div>
+                            <div class="views d-flex">
+                                <div class="me-3">
+                                    <img src="/img/icons/eye.svg" alt="">
+                                </div>
+                                <p>21</p>
+                            </div>
+                            <div class="comments d-flex">
+                                <div class="me-3">
+                                    <img src="/img/icons/comment.png" alt="">
+                                </div>
+                                <p>4</p>
+                            </div>
+                            <div class="catalog d-flex position-relative">
+                                <div class="me-3">
+                                    <img class="catalog-icon" src="/img/icons/communication.png" alt="">
+                                </div>
+                                <p>Веб-разработка</p>
+                            </div>
+                            <div class="user d-flex">
+                                <div class="me-3">
+                                    <img src="/img/icons/user.svg" alt="">
+                                </div>
+                                <p>Nast1289</p>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
             </div>
             <%- include('partials/categories.ejs') %>
         </div>

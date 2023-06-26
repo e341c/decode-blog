@@ -9,27 +9,27 @@
     <div class="background vh-100 py-5 d-flex justify-content-center">
         <div class="new-blog main w-75">
             <h3 class="mb-4">Новый блог</h3>
-            <div class="w-75">
+            <form action="/new" method="POST" class="w-75">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Введите заголовок блога" aria-label="Введите заголовок блога">
+                    <input type="text" class="form-control" placeholder="Введите заголовок блога" aria-label="Введите заголовок блога" name="name">
                 </div>
                 <div class="input-group mb-3">
-                    <select class="form-select" id="inputGroupSelect01">
+                    <select class="form-select" id="inputGroupSelect01" name="categories">
                     <option selected>Выберите категорию</option>
-                    <% blogs.forEach((element, key) => { %>
+                    <% categories.forEach((element, key) => { %>
                         <option value="<%= key %>"><%= element.name %></option>
                     <% }) %>
                     </select>
                 </div>
                 <div class="input-group mb-3 w-50">
-                    <input type="file" class="form-control" id="inputGroupFile02">
+                    <input type="file" class="form-control" id="inputGroupFile02" name="img">
                 </div>
                 <div class="form-floating">
-                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px"></textarea>
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px" name="description"></textarea>
                     <label for="floatingTextarea2">Введите описание блога</label>
                 </div>
-                <button class="btn btn-primary p-2 px-3 mt-3">Создать</button>
-            </div>
+                <button type="submit" class="btn btn-primary p-2 px-3 mt-3">Создать</button>
+            </form>
             
         </div>
     </div>
