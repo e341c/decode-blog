@@ -14,96 +14,28 @@
                     <p class="py-3">Популярные и лучшие публикации по программированию для начинающих
                     и профессиональных программистов и IT-специалистов.</p>
                 </div>
-                <div class="blog mt-5 pt-3">
-                    <img class="w-100" src="/img/image 1.svg" alt="">
-                    <h3 class="py-3 mt-3">Обзор Report Manager от Webix</h3>
-                    <p>Осень 2020 года стала плодотворным временем для специалистов Webix. <br>
-                        <br>
-                        Команда Webix выпустила восьмую версию библиотеки пользовательского интерфейса Webix с двумя новыми комплексными виджетами. Первый - зто Scheduler, о котором мы подробно говорили ранее. Второй виджет - это Gantt chart в JavaScript. Подробную информацию об этом виджете Вы можете найти в статье. <br>
-                        <br>
-                        Ноябрь продолжает тенденцию, и мы спешим поделиться с Вами новым комплексным виджетом Report Manager. Давайте рассмотрим его
-                    </p>
-                    <div class="blog-info d-flex justify-content-between align-items-center mt-5">
-                        <div class="date d-flex">
-                            <div class="me-3">
-                                <img src="/img/icons/calendar.svg" alt="">
-                            </div>
-                            <p>26.06.2020</p>
-                        </div>
-                        <div class="views d-flex">
-                            <div class="me-3">
-                                <img src="/img/icons/eye.svg" alt="">
-                            </div>
-                            <p>21</p>
-                        </div>
-                        <div class="comments d-flex">
-                            <div class="me-3">
-                                <img src="/img/icons/comment.png" alt="">
-                            </div>
-                            <p>4</p>
-                        </div>
-                        <div class="catalog d-flex position-relative">
-                            <div class="me-3">
-                                <img class="catalog-icon" src="/img/icons/communication.png" alt="">
-                            </div>
-                            <p>Веб-разработка</p>
-                        </div>
-                        <div class="user d-flex">
-                            <div class="me-3">
-                                <img src="/img/icons/user.svg" alt="">
-                            </div>
-                            <p>Nast1289</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="blog mt-5 pt-3">
-                    <img class="w-100" src="/img/image 2.png" alt="">
-                    <h3 class="py-3 mt-3">Разработчики изобрели методологию высокоскоростного программирования</h3>
-                    <p>Осень 2020 года стала плодотворным временем для специалистов Webix. <br>
-                        <br>
-                        Команда Webix выпустила восьмую версию библиотеки пользовательского интерфейса Webix с двумя новыми комплексными виджетами. Первый - зто Scheduler, о котором мы подробно говорили ранее. Второй виджет - это Gantt chart в JavaScript. Подробную информацию об этом виджете Вы можете найти в статье. <br>
-                        <br>
-                        Ноябрь продолжает тенденцию, и мы спешим поделиться с Вами новым комплексным виджетом Report Manager. Давайте рассмотрим его
-                    </p>
-                    <div class="blog-info d-flex justify-content-between align-items-center mt-5">
-                        <div class="date d-flex">
-                            <div class="me-3">
-                                <img src="/img/icons/calendar.svg" alt="">
-                            </div>
-                            <p>26.06.2020</p>
-                        </div>
-                        <div class="views d-flex">
-                            <div class="me-3">
-                                <img src="/img/icons/eye.svg" alt="">
-                            </div>
-                            <p>21</p>
-                        </div>
-                        <div class="comments d-flex">
-                            <div class="me-3">
-                                <img src="/img/icons/comment.png" alt="">
-                            </div>
-                            <p>4</p>
-                        </div>
-                        <div class="catalog d-flex position-relative">
-                            <div class="me-3">
-                                <img class="catalog-icon" src="/img/icons/communication.png" alt="">
-                            </div>
-                            <p>Веб-разработка</p>
-                        </div>
-                        <div class="user d-flex">
-                            <div class="me-3">
-                                <img src="/img/icons/user.svg" alt="">
-                            </div>
-                            <p>Nast1289</p>
-                        </div>
-                    </div>
-                </div>
+           
                 <div class="blog mt-5 pt-3">
                     <% blogs.forEach((blog, index) => { %>
-                        <img class="w-100" src="/img/<%= blog.img %>" alt="">
-                        <h3 class="py-3 mt-3"><%= blog.name %></h3>
+                        <img class="w-100" src="<%= blog.img %>" alt="">
+                        <div class="d-flex justify-content-between blog-name">
+                            <h3 class="py-3 mt-3"><%= blog.name %></h3>
+                            <div class="position-relative py-3 mt-3">
+                                <button class="d-flex align-items-center btn btn-light pe-3" onclick="toggle('<%= index %>')">
+                                    <svg style="transform: rotate(90deg);" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+                                        <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                                    </svg>
+                                    <p class="mb-0 ">Ещё</p>
+                                </button>
+                                <div class="d-flex flex-column position-absolute d-none" id="menu">
+                                    <a href="/edit" class="btn btn-light">Редактировать</a>
+                                    <button class="btn btn-danger">Удалить</button>
+                                </div>
+                            </div>
+                        </div>
+                
                         <p><%= blog.description %></p>
-                        <div class="blog-info d-flex justify-content-between align-items-center mt-5">
+                        <div class="blog-info d-flex justify-content-between align-items-center mt-3 mb-5">
                             <div class="date d-flex">
                                 <div class="me-3">
                                     <img src="/img/icons/calendar.svg" alt="">
@@ -126,13 +58,13 @@
                                 <div class="me-3">
                                     <img class="catalog-icon" src="/img/icons/communication.png" alt="">
                                 </div>
-                                <p>Веб-разработка</p>
+                                <p><%= blog.categories.name %></p>
                             </div>
                             <div class="user d-flex">
                                 <div class="me-3">
                                     <img src="/img/icons/user.svg" alt="">
                                 </div>
-                                <p>Nast1289</p>
+                                <p><%= blog.author.full_name %></p>
                             </div>
                         </div>
                     <% }) %>
@@ -141,5 +73,6 @@
             <%- include('partials/categories.ejs') %>
         </div>
     </div>
+    <script src="/js/toggle.js"></script>
 </body>
 </html>

@@ -3,24 +3,11 @@ const router = express.Router()
 const Blogs = require('../Blogs/Blogs.js')
 const Categories = require('../Categories/Categories.js')
 
-router.post('/new', async(req, res) => {
-    if(req.body.img != 0 && req.body.name != 0 && req.body.discount != 0 && req.body.categories){
-        await new Blogs({
-            img: req.body.img,
-            name: req.body.name,
-            discount: req.body.description,
-            categories: req.body.categories
-        }).save()
-        res.redirect('/')
-    }else{
-        res.redirect('/new?error=1')
-    }
-})
+require('../Blogs/router.js')
 
 router.get('/', async(req, res) => {
-    const allBlogs = await Blogs.find()
+    const allBlogs = await Blogs.find().populate('categories', 'name').populate('author' )
     const allCategories = await Categories.find()
-    console.log(allBlogs);
     res.render('blogs.ejs', {
         blogs: allBlogs,
         categories: allCategories,
