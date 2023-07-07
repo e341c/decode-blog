@@ -1,9 +1,6 @@
 const Blogs = require('./Blogs')
-
-const getAllBlogs = async(req, res) => {
-    const data = await Blogs.find()
-    res.send({data})
-}
+const fs = require('fs')
+const path = require('path')
 
 const createBlog = async(req, res) => {
     if(req.file && 
@@ -21,8 +18,27 @@ const createBlog = async(req, res) => {
     }else{
         res.redirect('/new?error=1')
     }
-    // res.send('ok')
+}
+
+const editBlog = async(req, res) => {
+    if(req.file && 
+        req.body.name.length > 2 && 
+        req.body.categories.length > 2 && 
+        req.body.description.length > 2){
+            const blog = await Blogs.findById(req.body.id)
+            fs.unlinkSync(path.join(__dirname + '../../../public' + blog.img))
+            await Blogs.findByIdAndUpdate(req.body.id, {
+                name : req.body.name,
+                categories : req.body.categories,
+                description : req.body.description,
+                img : `/img/blogs/${req.file.filename}`,
+                author: req.user._id,
+            })
+            res.redirect('/profile/' + req.user._id)
+    }else{
+        res.redirect(`/edit/${req.body.id}?error=1`)
+    }
 }
 
 
-module.exports = {getAllBlogs, createBlog}
+module.exports = {createBlog , editBlog}
