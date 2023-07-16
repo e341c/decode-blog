@@ -25,12 +25,14 @@ router.get('/register', (req, res) => {
 })
 
 router.get('/profile/:id', async(req, res) => {
-    const allBlogs = await Blogs.find({author: req.user._id}).populate('categories').populate('author')
+    const profileUser = req.params.id
+    const allBlogs = await Blogs.find({author: profileUser}).populate('categories').populate('author')
     const allCategories = await Categories.find()
     res.render('profile.ejs', {
         blogs: allBlogs,
         categories: allCategories,
-        user: req.user ? req.user: {}
+        user: req.user ? req.user: {},
+        profileUser
     })
 })
 
@@ -56,6 +58,14 @@ router.get('/comments', async(req, res) => {
     const allBlogs = await Blogs.find()
     res.render('comments.ejs', {
         blogs: allBlogs,
+        categories: allCategories,
+        user: req.user ? req.user: {}
+    })
+})
+
+router.get('/detail/:id', async(req, res) => {
+    const allCategories = await Categories.find()
+    res.render('detailBlog.ejs', {
         categories: allCategories,
         user: req.user ? req.user: {}
     })

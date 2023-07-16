@@ -40,5 +40,16 @@ const editBlog = async(req, res) => {
     }
 }
 
+const deleteFilm = async(req, res) => {
+    const blog = await Blogs.findById(req.params.id)
+    if(blog){
+        fs.unlinkSync(path.join(__dirname + '../../../public' + blog.img))
+        await Blogs.deleteOne({_id : req.params.id})
+        res.status(200).send('Ok')
+    }else{
+        res.status(404).send('Not found')
+    }
+}
 
-module.exports = {createBlog , editBlog}
+
+module.exports = {createBlog , editBlog, deleteFilm}
