@@ -52,7 +52,9 @@
                                 <div class="me-3">
                                     <img src="/img/icons/user.svg" alt="">
                                 </div>
-                                <a href="/profile/<%= blog.author._id %>"><%= blog.author.full_name %></a>
+                                <a href="/profile/<%= blog.author._id %>">
+                                    <p><%= blog.author.full_name %></p>
+                                </a>
                             </div>
                         </div>
                     <% }) %>

@@ -64,8 +64,10 @@ router.get('/comments', async(req, res) => {
 })
 
 router.get('/detail/:id', async(req, res) => {
+    const allBlogs = await Blogs.findById(req.params.id).populate('categories').populate('author')
     const allCategories = await Categories.find()
     res.render('detailBlog.ejs', {
+        blogs: allBlogs,
         categories: allCategories,
         user: req.user ? req.user: {}
     })
