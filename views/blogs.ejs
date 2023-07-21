@@ -59,6 +59,11 @@
                         </div>
                     <% }) %>
                 </div>
+                <div class="pages d-flex justify-content-center">
+                    <% for (let i = 0; i < pages; i++) { %>
+                        <a class="btn btn-primary p-2 px-3 me-2" href="?page=<%=i%>"><%= i + 1 %></a>
+                    <% } %>
+                </div>
             </div>
             <%- include('partials/categories.ejs') %>
         </div>

@@ -1,6 +1,6 @@
 <div class="categories d-flex flex-column ms-4 w-25 shadow-sm">
     <h3>Категории</h3>
     <% categories.forEach(element => { %>
-        <a href=""><%= element.name %></a>
+        <a href="?categories=<%=element.key%>"><%= element.name %></a>
     <% }); %>
 </div>

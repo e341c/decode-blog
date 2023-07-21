@@ -7,12 +7,26 @@ const User = require('../auth/User.js')
 require('../Blogs/router.js')
 
 router.get('/', async(req, res) => {
-    const allBlogs = await Blogs.find().populate('categories').populate('author' )
+    const options = {}
+    const category = await Categories.findOne({key : req.query.categories})
+    if(category){
+        options.categories = category._id
+    }
+    
+    let page = 0
+    const limit = 3
+    if(req.query.page && req.query.page > 0){
+        page = req.query.page
+    } 
+    const totalBlogs = await Blogs.count()
+
     const allCategories = await Categories.find()
+    const allBlogs = await Blogs.find(options).limit(limit).skip(page).populate('categories').populate('author' )
     res.render('blogs.ejs', {
         blogs: allBlogs,
         categories: allCategories,
-        user: req.user ? req.user: {}
+        user: req.user ? req.user: {},
+        pages : Math.ceil(totalBlogs / limit)
     })
 })
 
@@ -69,7 +83,7 @@ router.get('/detail/:id', async(req, res) => {
     res.render('detailBlog.ejs', {
         blogs: allBlogs,
         categories: allCategories,
-        user: req.user ? req.user: {}
+        user: req.user ? req.user: {},
     })
 })
 
