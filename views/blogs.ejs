@@ -60,9 +60,21 @@
                     <% }) %>
                 </div>
                 <div class="pages d-flex justify-content-center">
-                    <% for (let i = 0; i < pages; i++) { %>
-                        <a class="btn btn-primary p-2 px-3 me-2" href="?page=<%=i%>"><%= i + 1 %></a>
-                    <% } %>
+                    <p><%=localsString%></p>
+                    <% 
+                        let localsString = ''
+                        if(locals.categories){
+                            localsString = `categories=${locals.categories}&`
+                        }
+                        if(locals.search){
+                            localsString = `search=${locals.search}&`
+                        }
+                        for (let i = 0; i < pages; i++) { 
+                    %>
+                        <a href="?<%= localsString %>page=<%=i%>" class="btn btn-primary p-2 px-3 me-2" ><%= i + 1 %></a>
+                    <% 
+                        } 
+                    %>
                 </div>
             </div>
             <%- include('partials/categories.ejs') %>
