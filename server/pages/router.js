@@ -3,6 +3,7 @@ const router = express.Router()
 const Blogs = require('../Blogs/Blogs.js')
 const Categories = require('../Categories/Categories.js')
 const User = require('../auth/User.js')
+const Comments = require('../Comments/Comments.js')
 
 require('../Blogs/router.js')
 
@@ -11,7 +12,7 @@ router.get('/', async(req, res) => {
     const category = await Categories.findOne({key : req.query.categories})
     if(category){
         options.categories = category._id
-        res.locals.categories = req.query.categories
+        res.locals.category = req.query.categories
     }
     let page = 0
     const limit = 3
@@ -32,7 +33,7 @@ router.get('/', async(req, res) => {
 
     const totalBlogs = await Blogs.count(options)
     const allCategories = await Categories.find()
-    const allBlogs = await Blogs.find(options).limit(limit).skip(page * limit).populate('categories').populate('author' )
+    const allBlogs = await Blogs.find(options).limit(limit).skip(page * limit).populate('categories').populate('author')
     res.render('blogs.ejs', {
         blogs: allBlogs,
         categories: allCategories,
@@ -79,21 +80,14 @@ router.get('/edit/:id', async(req, res) => {
     })
 })
 
-router.get('/comments', async(req, res) => {
-    const allBlogs = await Blogs.find()
-    res.render('comments.ejs', {
-        blogs: allBlogs,
-        categories: allCategories,
-        user: req.user ? req.user: {}
-    })
-})
-
 router.get('/detail/:id', async(req, res) => {
     const allBlogs = await Blogs.findById(req.params.id).populate('categories').populate('author')
     const allCategories = await Categories.find()
+    const allComments = await Comments.find().populate('authorId')
     res.render('detailBlog.ejs', {
         blogs: allBlogs,
         categories: allCategories,
+        comments: allComments,
         user: req.user ? req.user: {},
     })
 })

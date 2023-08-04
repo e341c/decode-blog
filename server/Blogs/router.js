@@ -10,4 +10,3 @@ router.post('/api/blogs/edit', isAuth,  upload.single('img'), editBlog)
 router.delete('/api/blogs/:id', isAuth, deleteFilm)
 
 module.exports = router
-

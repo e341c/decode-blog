@@ -28,6 +28,7 @@ app.use(require('./server/pages/router.js'))
 app.use(require('./server/Blogs/router.js'))
 app.use(require('./server/Categories/router.js'))
 app.use(require('./server/auth/router.js'))
+app.use(require('./server/Comments/router.js'))
 
 const PORT = 8001
 
