@@ -26,16 +26,16 @@ passport.use(new GitHubStrategy({
     callbackURL: "http://localhost:8001/api/auth/github/"
 },
     async function (accessToken, refreshToken, profile, done) {
-        const user = await User.find({githubId: profile.id})
-        console.log(profile);
-        const newUser = await new User({ 
-            githubId: profile.id,
-            email: profile.email,
-            full_name: profile.displayName,
-            // password: String,
-        }).save()
-        console.log(newUser);
-        return done(null, newUser) 
+        const user = await User.findOne({githubId: profile.id})
+        if(!user){
+            const newUser = await new User({ 
+                githubId: profile.id,
+                email: profile.email,
+                full_name: profile.displayName,
+            }).save()
+            return done(null, newUser) 
+        }
+        return done(null, user) 
     }
 ));
 
